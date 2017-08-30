@@ -1,0 +1,45 @@
+{
+    "author": "JRS",
+    "dependencies": {},
+    "keywords": [],
+    "name": "tot",
+    "pebble": {
+        "capabilities": [
+            "location",
+            "configurable"
+        ],
+        "displayName": "ToT",
+        "enableMultiJS": false,
+        "messageKeys": {
+            "ERROR_MSG": 6,
+            "EVENTS": 5,
+            "HEIGHTS": 4,
+            "NAME": 0,
+            "N_EVENTS": 2,
+            "TIMES": 3,
+            "UNIT": 1
+        },
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/menu_icon.png",
+                    "menuIcon": true,
+                    "name": "IMAGE_MENU_ICON",
+                    "targetPlatforms": null,
+                    "type": "png"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt"
+        ],
+        "uuid": "a6108db6-73c9-4c50-8594-ebd7f3d435b3",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "0.1.0"
+}
