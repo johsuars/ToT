@@ -1,16 +1,16 @@
 var site_url = "http://users.humboldt.edu/jsmith/tides/";
 
-var lat = 0;
-var lon = 0;
+//var lat = 0;
+//var lon = 0;
 var token = 'not_set';
 var timeline = 0;
 var current_watch;
 
-var locationOptions = {
-  enableHighAccuracy: false, 
-  maximumAge: 0, 
-  timeout: 1000
-};
+// var locationOptions = {
+//  enableHighAccuracy: false, 
+//  maximumAge: 0, 
+//  timeout: 1000
+//};
 
 
 function send_pebble_message(message) {
@@ -93,12 +93,13 @@ function send_error_message_to_pebble(error_string){
 
 function get_data_for_user(){
 
-    console.log('My token is ' + token);
+   console.log('My token is ' + token);
 
-    var request = new XMLHttpRequest();
+ var request = new XMLHttpRequest();
 
-    console.log('sending request to: ' + site_url+'users?token='+token);
-    request.open('GET', site_url+'users?token='+token, true);
+ //   console.log('sending request to: ' + site_url+'users?token='+token);
+  console.log('sending request to: ' + site_url+'tides.xml');
+    request.open('GET', site_url+'tides.xml', true);
 
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -125,7 +126,7 @@ function get_data_for_user(){
       // There was a connection error of some sort
       console.log('Could not reach server.');
       //send error message
-      send_error_message_to_pebble("Server Unavailable")
+      send_error_message_to_pebble("Server Unavailable");
     };
     request.send();
 }
@@ -152,12 +153,12 @@ Pebble.addEventListener("ready",
         console.log("running on " + current_watch.platform);
 
         //request current position
-        navigator.geolocation.getCurrentPosition(function (pos){
-          lat = pos.coords.latitude;
-          lon = pos.coords.longitude;
-        }, function (err){
-            console.log('location error (' + err.code + '): ' + err.message);
-        }, locationOptions);
+      //  navigator.geolocation.getCurrentPosition(function (pos){
+      //   lat = pos.coords.latitude;
+      //   lon = pos.coords.longitude;
+      //  }, function (err){
+      //      console.log('location error (' + err.code + '): ' + err.message);
+      //  }, locationOptions);
 
 
         if(Pebble.getTimelineToken){
@@ -192,13 +193,13 @@ Pebble.addEventListener('showConfiguration', function(e) {
 
         var url;
 
-        if(lat !== 0 && lon !== 0) {
-          url = site_url+'configure?token='+token+'&timeline='+timeline+'&lat='+lat+'&lon='+lon;
-        }
-        else {
-          url = site_url+'configure?token='+token+'&timeline='+timeline;
-        }
-
+    //   if(lat !== 0 && lon !== 0) {
+    //     url = site_url+'configure?token='+token+'&timeline='+timeline+'&lat='+lat+'&lon='+lon;
+    //  }
+    //     else {
+       url = site_url+'configure?token='+token+'&timeline='+timeline;
+    // }
+        
         console.log(url);
         Pebble.openURL(url);
         
